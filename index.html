@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writer's Room</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>Writer's Room</h1>
+  <span class="online-count" id="onlineCount">0명 접속 중</span>
+</header>
+
+<section class="toolbar">
+  <div class="tool-group">
+    <span class="tool-label">작업 시간</span>
+    <span class="tool-display" id="timerDisplay">00:00:00</span>
+    <button id="startBtn" class="btn">시작</button>
+    <button id="pauseBtn" class="btn" disabled>정지</button>
+    <button id="resetBtn" class="btn-ghost">초기화</button>
+  </div>
+
+  <div class="tool-group">
+    <label class="toggle">
+      <input type="checkbox" id="pomoToggle">
+      <span>뽀모도로</span>
+    </label>
+    <span class="tool-display hidden" id="pomoDisplay">25:00</span>
+    <button id="pomoStart" class="btn hidden">시작</button>
+    <button id="pomoPause" class="btn hidden" disabled>정지</button>
+  </div>
+
+  <div class="tool-group">
+    <label class="toggle">
+      <input type="checkbox" id="mediaToggle">
+      <span>음성/화면 공유</span>
+    </label>
+    <button id="voiceBtn" class="btn-ghost hidden">음성 켜기</button>
+    <button id="screenBtn" class="btn-ghost hidden">화면 공유</button>
+  </div>
+
+  <button id="myCharBtn" class="btn-accent">내 캐릭터</button>
+</section>
+
+<main class="room-wrap">
+  <div class="room" id="roomArea">
+    <p class="room-empty" id="roomEmpty">아직 아무도 없어요. '내 캐릭터'를 눌러 시작해보세요.</p>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="메시지를 입력하세요">
+      <button id="sendChatBtn" class="btn">전송</button>
+    </div>
+  </div>
+</main>
+
+<video id="localVideo" autoplay muted playsinline class="hidden"></video>
+<div id="remoteVideos" class="remote-videos"></div>
+
+<div id="charPanel" class="side-panel">
+  <button id="closePanelBtn" class="btn-ghost close-btn">✕</button>
+  <div id="charPanelBody"></div>
+</div>
+<div id="overlay" class="overlay hidden"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
